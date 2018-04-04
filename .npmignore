@@ -1,6 +1,6 @@
 .editorconfig
 .eslintignore
 .eslintrc
-bitbucket-pipelines.yml
+.travis.yml
 coverage/
 test/
