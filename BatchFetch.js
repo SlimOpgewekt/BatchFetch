@@ -10,20 +10,6 @@ class BatchFetch {
         return batch;
     }
 
-    static createId() {
-        return require('crypto').randomBytes(64)
-            .toString('hex')
-            .slice(0, 50);
-    }
-
-    static cancelId(id) {
-        const batch = this.batchs.filter(batch => batch.id === id);
-        if (batch.length === 0)
-            return;
-
-        batch[0].cancel();
-    }
-
     static createRequest({url, options = {method: 'GET'}}) {
         const request = options.method === 'POST' ? agent.post(url) : agent.get(url);
 
@@ -49,7 +35,6 @@ class BatchFetch {
 
     constructor(req = [{url: '', options: {}}], cbs = {e401: () => {}}) {
         this.req = req;
-        this.id = BatchFetch.createId();
         this.requests = [];
         this.results = [];
         this.abort = false;

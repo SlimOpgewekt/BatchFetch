@@ -20,16 +20,6 @@ describe('BatchFetch', () => {
                 expect(BatchFetch.createBatch).toBeInstanceOf(Function);
             });
 
-            test('Has function createId', () => {
-                expect(BatchFetch).toHaveProperty('createId');
-                expect(BatchFetch.createId).toBeInstanceOf(Function);
-            });
-
-            test('Has function cancelId', () => {
-                expect(BatchFetch).toHaveProperty('cancelId');
-                expect(BatchFetch.cancelId).toBeInstanceOf(Function);
-            });
-
             test('Has function createRequest', () => {
                 expect(BatchFetch).toHaveProperty('createRequest');
                 expect(BatchFetch.createRequest).toBeInstanceOf(Function);
@@ -61,70 +51,6 @@ describe('BatchFetch', () => {
                 expect(BatchFetch.batchs[0]).not.toBe(BatchFetch.batchs[1]);
                 expect(BatchFetch.batchs[1]).not.toBe(BatchFetch.batchs[2]);
                 expect(BatchFetch.batchs[2]).not.toBe(BatchFetch.batchs[0]);
-            });
-        });
-
-        describe('.createId', () => {
-            test('Should return a string', () => {
-                const result = BatchFetch.createId();
-
-                expect(typeof result).toBe('string');
-            });
-
-            test('Should be 50 characters', () => {
-                const result = BatchFetch.createId();
-
-                expect(result.length).toBe(50);
-            });
-
-            test('Should create new ids when called', () => {
-                const result1 = BatchFetch.createId();
-                const result2 = BatchFetch.createId();
-
-                expect(result1).not.toEqual(result2);
-            });
-        });
-
-        describe('.cancelId', () => {
-            test('Should do nothing when the batch with the given id is not found', () => {
-                const batch = BatchFetch.createBatch([]);
-
-                batch.cancel = jest.fn();
-
-                const fakeId = 'fakeId';
-
-                BatchFetch.cancelId(fakeId);
-
-                expect(batch.cancel).toHaveBeenCalledTimes(0);
-            });
-
-            test('Should call cancel on the batch with the given id', () => {
-                const batch = BatchFetch.createBatch([]);
-
-                batch.cancel = jest.fn();
-
-                BatchFetch.cancelId(batch.id);
-
-                expect(batch.cancel).toHaveBeenCalledTimes(1);
-            });
-
-            test('Should only call call cancel on the batch with the given id', () => {
-                const batch1 = BatchFetch.createBatch([]);
-                const batch2 = BatchFetch.createBatch([]);
-                const batch3 = BatchFetch.createBatch([]);
-                const batch4 = BatchFetch.createBatch([]);
-
-                batch1.cancel = jest.fn();
-                batch2.cancel = jest.fn();
-                batch3.cancel = jest.fn();
-                batch4.cancel = jest.fn();
-
-                BatchFetch.cancelId(batch3.id);
-
-                expect(batch1.cancel).toHaveBeenCalledTimes(0);
-                expect(batch2.cancel).toHaveBeenCalledTimes(0);
-                expect(batch3.cancel).toHaveBeenCalledTimes(1);
-                expect(batch4.cancel).toHaveBeenCalledTimes(0);
             });
         });
 
@@ -211,14 +137,6 @@ describe('BatchFetch', () => {
             test('Has property req', () => {
                 expect(batch).toHaveProperty('req');
                 expect(batch.req).toBeInstanceOf(Array);
-            });
-
-            test('Has unique property id', () => {
-                const batch1 = new BatchFetch();
-                const batch2 = new BatchFetch();
-
-                expect(batch).toHaveProperty('id');
-                expect(batch1.id === batch2.id).toBeFalsy();
             });
 
             test('Has property requests', () => {
