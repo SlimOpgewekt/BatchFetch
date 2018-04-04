@@ -1,6 +1,6 @@
 {
   "name": "@slimopgewekt/batchfetch",
-  "version": "0.3.3",
+  "version": "0.4.0",
   "main": "BatchFetch.js",
   "description": "Batch cancelable requests in 1 go",
   "directories": {
