@@ -1,0 +1,50 @@
+{
+  "name": "batchfetch",
+  "version": "0.3.2",
+  "main": "BatchFetch.js",
+  "description": "Batch cancelable requests in 1 go",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "jest",
+    "publish": "npm publish --userconfig ~./.npmrc-slim --access public"
+  },
+  "dependencies": {
+    "superagent": "^3.8.2"
+  },
+  "author": "Renzo Roso <renzo@slimopgewekt.nl>",
+  "devDependencies": {
+    "eslint": "^4.17.0",
+    "eslint-plugin-react": "^7.7.0",
+    "jest": "^22.2.1"
+  },
+  "jest": {
+    "automock": false,
+    "collectCoverage": true,
+    "coverageThreshold": {
+      "global": {
+        "branches": 80,
+        "lines": 80,
+        "functions": 80,
+        "statements": 50
+      }
+    },
+    "coverageDirectory": "coverage"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@bitbucket.org/slimopgewekt/batchfetch.git"
+  },
+  "keywords": [
+    "superagent",
+    "request",
+    "batch",
+    "batch requests",
+    "cancel batch request",
+    "request",
+    "batch",
+    "ajax"
+  ],
+  "homepage": "https://bitbucket.org/slimopgewekt/batchfetch#readme"
+}

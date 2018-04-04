@@ -1,0 +1,6 @@
+.editorconfig
+.eslintignore
+.eslintrc
+bitbucket-pipelines.yml
+coverage/
+test/
